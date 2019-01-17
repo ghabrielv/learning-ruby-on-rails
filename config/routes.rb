@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-  get '/home', to: 'pages#home'
+  devise_for :users
+  root 'books#index'
+
+  resources :books
+  resources :comments, only: [:create]
 end

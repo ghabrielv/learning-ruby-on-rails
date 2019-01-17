@@ -1,0 +1,23 @@
+<div class="books-page">
+  <div class="container">
+    <div class="text-right"><%= link_to "Add Book", new_book_path, class: "btn btn-primary rounded-0" %></div>
+
+    <% @books.each do |book| %>
+      <div class="book card flex-sm-row align-items-center align-items-sm-start mt-5">
+        <img src="<%= book.image_url %>" alt="<%= book.title %>">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= book.title %>
+            <small><%= book.author %></small>
+          </h5>
+          <p class="card-text"><%= book.description %></p>
+          <%= link_to "Details", book, class: "btn btn-primary" %>
+          <% if signed_in? %>
+            <%= link_to "Edit", edit_book_path(book), class: "btn btn-link" %>
+            <%= link_to "Delete", book, class: "btn btn-link text-danger", method: :delete, data: { confirm: "Are you sure you want to delete this book?" } %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

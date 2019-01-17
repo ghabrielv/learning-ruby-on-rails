@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-    def home
-        @name = "Ghabriel"
-    end
+  def home
+  end
 end
